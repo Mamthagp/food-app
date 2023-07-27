@@ -1,0 +1,44 @@
+{
+  "name": "namasthe-react",
+  "version": "1.0.0",
+  "description": "React from zero to hero",
+  "main": "App.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mamthagp/react-core.git"
+  },
+  "keywords": [
+    "react",
+    "react",
+    "js"
+  ],
+  "author": "Mamatha Gowdru Parameshwarappa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mamthagp/react-core/issues"
+  },
+  "homepage": "https://github.com/Mamthagp/react-core#readme",
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "buffer": "^6.0.3",
+    "jest": "^29.6.2",
+    "parcel": "^2.9.3",
+    "postcss": "^8.4.26",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.2"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
