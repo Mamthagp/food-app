@@ -1,6 +1,7 @@
-import React, { lazy, Suspense } from "react"
+import React, { lazy, Suspense, useState, useEffect } from "react"
 import ReactDOM from "react-dom/client"
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
+import { Provider } from "react-redux"
 import Header from "./components/Header"
 import Body from "./components/Body"
 //import About from "./components/About"
@@ -9,6 +10,9 @@ import Error from "./components/Error"
 import RestaurantMenu from "./components/RestaurantMenu"
 import Shimmer from "./components/Shimmer"
 //import Grocery from "./components/Grocery"
+import UserContext from "./utils/UserContext"
+import appStore from "./utils/appStore"
+import Cart from "./components/Cart"
 
 // Chunking
 // Code Splitting
@@ -20,15 +24,29 @@ import Shimmer from "./components/Shimmer"
 const Grocery = lazy(() => import('./components/Grocery'))
 const About = lazy(() => import('./components/About'))
 
-const AppLayout = () => {
-    return (
-        
-        <div className="app">
-            <Header />
-            
-            <Outlet />
 
-        </div>
+
+const AppLayout = () => {
+    const [ userName, setUserName ] = useState(null)
+
+    useEffect(() => {
+        const data = {
+            name : 'Mamatha Gowdru Param'
+        }
+        setUserName(data.name)
+    }, [])
+
+    return (
+       <Provider store={appStore}>
+            <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
+                <div className="app">
+                    {/* <UserContext.Provider value={{loggedInUser: 'Mamtha'}}> */}
+                        <Header />
+                    {/* </UserContext.Provider> */}
+                    <Outlet />
+                </div>
+            </UserContext.Provider>
+       </Provider>
     )
 }
 
@@ -56,6 +74,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/grocery",
                 element: <Suspense fallback={<Shimmer/>}><Grocery /></Suspense>
+            },
+            {
+                path: '/cart',
+                element: <Cart />
             }
         ],
         errorElement: <Error />

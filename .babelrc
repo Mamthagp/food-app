@@ -1,16 +1,8 @@
-// {
-//     "plugins": [ 
-//         [ 
-//             "transform-remove-console", 
-//             { "exclude": [ "error", "warn"] } // it will just remove only console.log() not errors and warnings
-//         ]
-//     ]
-// }
-
-{   
-    
-    "presets": [
-        ["@babel/preset-env", {"targets": {"node": "current"}}],
-        ["@babel/preset-react", {"runtime": "automatic"}]
+{
+    "plugins": [ 
+        [ 
+            "transform-remove-console", 
+            { "exclude": [ "error", "warn"] } // it will just remove only console.log() not errors and warnings
+        ]
     ]
 }
